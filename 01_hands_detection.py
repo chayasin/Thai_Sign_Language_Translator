@@ -15,6 +15,9 @@ while True:
     if results.multi_hand_landmarks:
         for handLms in results.multi_hand_landmarks:
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
+            for index, lm in enumerate(handLms.landmark):
+                if index == 0:
+                    print(lm)
             
     cv2.imshow("Image", cv2.flip(img, 1))
     cv2.waitKey(1)
