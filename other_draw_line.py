@@ -12,6 +12,11 @@ mpDraw = mp.solutions.drawing_utils
 # stime = time.now()
 
 points_arr = []
+lines_array = []
+
+def draw_lines(img):
+    for line in lines_array:
+        draw_line(line)
 
 def draw_line(img):
     if not points_arr:
@@ -20,6 +25,11 @@ def draw_line(img):
         return
     for x, y in zip(points_arr[:-1], points_arr[1:]):
         cv2.line(img, x, y, (255,0,0), 5)
+        
+def add_point(point):
+    if now_time - start_time > 1:
+        return
+    points_arr.append(point)
 
 while True:
     success, img = cap.read()
